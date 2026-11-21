@@ -1,0 +1,24 @@
+{
+  "entity_type": "environment",
+  "schema_version": "1.0.0",
+  "attributes": {
+    "wind_speed": {
+      "value_type": "Float",
+      "unit": "m/s",
+      "required": false,
+      "range": {"min": 0.0, "max": 100.0}
+    },
+    "wind_direction": {
+      "value_type": "Float",
+      "unit": "deg",
+      "required": false,
+      "range": {"min": 0.0, "max": 360.0}
+    },
+    "temperature": {
+      "value_type": "Float",
+      "unit": "C",
+      "required": false,
+      "range": {"min": -50.0, "max": 60.0}
+    }
+  }
+}

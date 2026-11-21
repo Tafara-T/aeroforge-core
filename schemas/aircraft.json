@@ -1,0 +1,42 @@
+{
+  "entity_type": "aircraft",
+  "schema_version": "1.0.0",
+  "attributes": {
+    "gps_latitude": {
+      "value_type": "Float",
+      "unit": "deg",
+      "required": true,
+      "range": {"min": -90.0, "max": 90.0}
+    },
+    "gps_longitude": {
+      "value_type": "Float",
+      "unit": "deg",
+      "required": true,
+      "range": {"min": -180.0, "max": 180.0}
+    },
+    "gps_altitude": {
+      "value_type": "Float",
+      "unit": "m",
+      "required": false,
+      "range": {"min": -1000.0, "max": 30000.0}
+    },
+    "battery_voltage": {
+      "value_type": "Float",
+      "unit": "V",
+      "required": true,
+      "range": {"min": 0.0, "max": 50.0}
+    },
+    "flight_mode": {
+      "value_type": "Text",
+      "unit": null,
+      "required": true,
+      "range": null
+    },
+    "armed_status": {
+      "value_type": "Boolean",
+      "unit": null,
+      "required": true,
+      "range": null
+    }
+  }
+}
