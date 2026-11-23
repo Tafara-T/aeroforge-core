@@ -1,6 +1,6 @@
 use crate::mission_contracts::{
     RiskAssessment, Hazard, ConfidenceAssessment, CalibrationMethod,
-    MissionSuccessEstimate, StatisticalJustification, AuthorityType,
+    MissionSuccessEstimate, StatisticalJustification,
 };
 use chrono::Utc;
 use pyo3::prelude::*;

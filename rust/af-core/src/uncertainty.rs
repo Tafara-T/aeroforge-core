@@ -1,6 +1,5 @@
 use crate::core_types::{
-    EntityId, AttributeId, UncertaintyPolicy, ToleranceSource, ValidityPeriod,
-    UncertaintyStatus, StateQuality,
+    EntityId, AttributeId, UncertaintyPolicy,
 };
 use crate::types::AfStateUpdate;
 use chrono::{DateTime, Utc};

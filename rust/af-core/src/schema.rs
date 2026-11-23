@@ -1,7 +1,6 @@
-use crate::core_types::{EntitySchema, EntityType, AttributeId, AttributeDefinition};
+use crate::core_types::{EntitySchema, EntityType, AttributeId};
 use std::collections::HashMap;
 use std::fs;
-use std::path::Path;
 use pyo3::exceptions::PyValueError;
 use pyo3::prelude::*;
 

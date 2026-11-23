@@ -1,4 +1,4 @@
-use crate::core_types::{RealitySnapshot, StateValue, AttributeId};
+use crate::core_types::{RealitySnapshot, StateValue};
 use crate::mission_model::{MissionModel, FeasibilityReport, ConstraintViolation, ConstraintOperator};
 use pyo3::prelude::*;
 use pyo3::exceptions::PyValueError;
