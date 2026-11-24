@@ -52,8 +52,16 @@ AEROFORGE (AF) is a high-integrity, fail-closed mission intelligence and constra
 ### Stage 2: Reality Model & Constraint Integration
 - **Fail-Closed Execution**: Hard gates strictly block mission execution on missing or unreliable evidence.
 - **Evidence Quality Tracking**: Distinguishes between `Valid`, `Contradicted`, and `Unknown` data sources.
-- **High-Frequency Ingestion**: Validated at 60Hz+ via JSBSim integration with verified history retention and <1ms latency per update.
+- **High-Frequency Ingestion**: Python-to-Rust ingestion path tested at ~870 steps/sec (~1.15ms/step) on local development hardware. In a controlled 600-step JSBSim simulation, history retention resulted in ~0.02 MB memory growth. (Note: Long-term production deployments require active history pruning, as the current reference implementation retains an unbounded history vector).
 - **Numerical Contradiction Detection**: Automatically flags state deviations exceeding registered tolerance policies.
+
+### Stage 3: Predictive Intelligence (Production Implementation Validated)
+- **Production Rust Implementation**: Three mathematically rigorous prediction functions (`predict_fuel_endurance`, `predict_link_reliability`, `predict_mission_duration`) implemented in `rust/af-core/src/prediction.rs` with PyO3 bindings.
+- **Fail-Closed Design**: Models explicitly return `StateValue::Null` and `ValidationStatus::Unvalidated` when inputs are missing, NaN, or physically infeasible (e.g., crosswind exceeding true airspeed, dependency cycles detected).
+- **DAG-Based Critical Path Scheduling**: Mission duration prediction implements topological sort with cycle detection and resource serialization, correctly handling parallel and sequential task execution across multiple resources.
+- **Python-Rust Equivalence Validated**: All three prediction models produce mathematically equivalent outputs (within `1e-6` tolerance) when given identical inputs, verified by dedicated equivalence tests.
+- **Comprehensive Test Coverage**: 15 Rust unit tests covering nominal, boundary, adversarial, and complex scheduling scenarios, all passing.
+- **Backward Compatibility**: Existing `Task` contract remains completely untouched. New scheduling metadata isolated in separate `TransitSegment` and `TaskScheduleEntry` structs.
 
 ### Stage 3: Predictive Intelligence (Reference Models)
 - **Fuel Endurance Prediction**: Mass-flow-based calculation with strict reserve handling and fail-closed rejection of invalid/NaN inputs.

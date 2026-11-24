@@ -12,6 +12,9 @@ pub mod advanced_constraints;
 pub mod payload_link;
 pub mod mission_risk;
 pub mod mission_planner;
+pub mod prediction;
+#[cfg(test)]
+mod prediction_tests;
 
 #[pymodule]
 fn af_core(_py: Python, m: &PyModule) -> PyResult<()> {
@@ -23,5 +26,6 @@ fn af_core(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_class::<payload_link::PyPayloadLinkModeler>()?;
     m.add_class::<mission_risk::PyRiskAssessor>()?;
     m.add_class::<mission_planner::PyMissionPlanner>()?;
+    m.add_class::<prediction::PyPredictionEngine>()?;
     Ok(())
 }

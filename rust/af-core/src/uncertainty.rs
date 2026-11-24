@@ -1,5 +1,5 @@
 use crate::core_types::{
-    EntityId, AttributeId, UncertaintyPolicy,
+    EntityId, AttributeId, UncertaintyPolicy, StateQuality,
 };
 use crate::types::AfStateUpdate;
 use chrono::{DateTime, Utc};
